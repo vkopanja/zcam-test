@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All users</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            font-family: Tahoma, Geneva, sans-serif;
+        }
+
+        table td {
+            padding: 15px;
+        }
+
+        table thead td {
+            background-color: #54585d;
+            color: #ffffff;
+            font-weight: bold;
+            font-size: 13px;
+            border: 1px solid #54585d;
+        }
+
+        table tbody td {
+            color: #636363;
+            border: 1px solid #dddfe1;
+        }
+
+        table tbody tr {
+            background-color: #f9fafb;
+        }
+
+        table tbody tr:nth-child(odd) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+<table sty>
+    <thead>
+    <tr>
+        <td>Name</td>
+        <td>Username</td>
+        <td>Email</td>
+        <td>Phone</td>
+        <td>Website</td>
+        <td>Actions</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="usr: ${users}">
+        <td th:text="${usr.name}"></td>
+        <td th:text="${usr.username}"></td>
+        <td th:text="${usr.email}"></td>
+        <td th:text="${usr.phone}"></td>
+        <td th:text="${usr.website}"></td>
+        <td>
+            <a th:href="@{/edit/{id}(id=${usr.id})}"><small>Edit</small></a> &nbsp;
+            <a th:href="@{/delete/{id}(id=${usr.id})}"><small>Delete</small></a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>
